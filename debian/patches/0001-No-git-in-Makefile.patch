@@ -1,0 +1,34 @@
+From: Ian Ferguson <iferguso@genome.wustl.edu>
+Date: Fri, 27 Feb 2015 17:27:36 -0600
+Subject: [PATCH] No git in Makefile
+
+Don't try to figure out the current git revision as part of the build
+process.
+---
+ Makefile |   12 ------------
+ 1 files changed, 0 insertions(+), 12 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index d5af38e..487a1a8 100644
+--- a/Makefile
++++ b/Makefile
+@@ -89,18 +89,6 @@ BGZIP  = $(HTSDIR)/bgzip
+ 
+ PACKAGE_VERSION = 1.0
+ 
+-# If building from a Git repository, replace $(PACKAGE_VERSION) with the Git
+-# description of the working tree: either a release tag with the same value
+-# as $(PACKAGE_VERSION) above, or an exact description likely based on a tag.
+-# $(shell), :=, etc are GNU Make-specific.  If you don't have GNU Make,
+-# comment out this conditional.
+-ifneq "$(wildcard .git)" ""
+-PACKAGE_VERSION := $(shell git describe --always --dirty)
+-
+-# Force version.h to be remade if $(PACKAGE_VERSION) has changed.
+-version.h: $(if $(wildcard version.h),$(if $(findstring "$(PACKAGE_VERSION)",$(shell cat version.h)),,force))
+-endif
+-
+ # If you don't have GNU Make but are building from a Git repository, you may
+ # wish to replace this with a rule that always rebuilds version.h:
+ # version.h: force
+-- 
