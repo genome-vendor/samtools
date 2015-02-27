@@ -39,9 +39,11 @@ AOBJS=      bam_index.o bam_plcmd.o sam_view.o \
 INCLUDES=   -I. -I$(HTSDIR)
 LIBCURSES=  -lcurses # -lXCurses
 
-prefix      = /usr/local
+prefix      = /usr
 exec_prefix = $(prefix)
 bindir      = $(exec_prefix)/bin
+libdir      = $(exec_prefix)/lib/samtools
+sharedir    = $(prefix)/share/samtools
 mandir      = $(prefix)/share/man
 man1dir     = $(mandir)/man1
 
@@ -59,7 +61,6 @@ BUILT_MISC_PROGRAMS = \
 	misc/md5fa misc/md5sum-lite misc/wgsim
 
 MISC_PROGRAMS = \
-	$(BUILT_MISC_PROGRAMS) \
 	misc/blast2sam.pl misc/bowtie2sam.pl misc/export2sam.pl \
 	misc/interpolate_sam.pl misc/novo2sam.pl \
 	misc/plot-bamstats misc/psl2sam.pl \
@@ -255,10 +256,17 @@ misc/md5sum-lite.o: misc/md5.c misc/md5.h
 	$(CC) $(CFLAGS) $(CPPFLAGS) -DMD5SUM_MAIN -c -o $@ misc/md5.c
 
 
+dest_bindir   = $(DESTDIR)$(bindir)
+dest_libdir   = $(DESTDIR)$(libdir)$(PACKAGE_VERSION)
+dest_sharedir = $(DESTDIR)$(sharedir)$(PACKAGE_VERSION)
+dest_mandir   = $(DESTDIR)$(man1dir)
+
 install: $(PROGRAMS) $(BUILT_MISC_PROGRAMS)
-	$(INSTALL_DIR) $(DESTDIR)$(bindir) $(DESTDIR)$(man1dir)
-	$(INSTALL_PROGRAM) $(PROGRAMS) $(MISC_PROGRAMS) $(DESTDIR)$(bindir)
-	$(INSTALL_DATA) samtools.1 $(DESTDIR)$(man1dir)
+	$(INSTALL_DIR) $(dest_bindir) $(dest_libdir) $(dest_sharedir) $(dest_mandir)
+	$(foreach program,$(PROGRAMS),$(INSTALL_PROGRAM) -T $(program) $(dest_bindir)/$(program)$(PACKAGE_VERSION);)
+	$(INSTALL_PROGRAM) $(BUILT_MISC_PROGRAMS) $(dest_libdir)
+	$(INSTALL_PROGRAM) $(MISC_PROGRAMS) $(dest_sharedir)
+	$(INSTALL_DATA) -T samtools.1 $(dest_mandir)/samtools$(PACKAGE_VERSION).1
 
 
 testclean:
