@@ -90,18 +90,6 @@ BGZIP  = $(HTSDIR)/bgzip
 
 PACKAGE_VERSION = 1.2
 
-# If building from a Git repository, replace $(PACKAGE_VERSION) with the Git
-# description of the working tree: either a release tag with the same value
-# as $(PACKAGE_VERSION) above, or an exact description likely based on a tag.
-# $(shell), :=, etc are GNU Make-specific.  If you don't have GNU Make,
-# comment out this conditional.
-ifneq "$(wildcard .git)" ""
-PACKAGE_VERSION := $(shell git describe --always --dirty)
-
-# Force version.h to be remade if $(PACKAGE_VERSION) has changed.
-version.h: $(if $(wildcard version.h),$(if $(findstring "$(PACKAGE_VERSION)",$(shell cat version.h)),,force))
-endif
-
 # If you don't have GNU Make but are building from a Git repository, you may
 # wish to replace this with a rule that always rebuilds version.h:
 # version.h: force
