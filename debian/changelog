@@ -1,0 +1,5 @@
+samtools1.0 (1.0-1) lucid; urgency=low
+
+  * Initial package. Release samtools version 1.0
+
+ -- Ian Ferguson <iferguso@genome.wustl.edu>  Thu, 26 Feb 2015 15:58:44 -0600

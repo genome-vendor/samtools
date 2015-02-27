@@ -1,0 +1,23 @@
+Source: samtools1.0
+Section: science
+Priority: optional
+Maintainer: Genome Developers <genome-dev@genome.wustl.edu>
+Uploaders: Ian Ferguson <iferguso@genome.wustl.edu>
+DM-Upload-Allowed: yes
+Build-Depends: debhelper (>= 7.0.50~)
+Standards-Version: 3.9.2
+Homepage: http://www.htslib.org/
+Vcs-Git: git://github.com/samtools/samtools.git
+Vcs-Browser: https://github.com/samtools/samtools
+
+Package: samtools1.0
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${python:Depends}, ${perl:Depends}
+Description: Utilities for the Sequence Alignment/Map (SAM) format
+ Samtools is a suite of programs (written in C using htslib) for interacting
+ with high-throughput sequencing data.
+ .
+ Samtools is a set of utilities that manipulate alignments in the BAM format.
+ It imports from and exports to the SAM (Sequence Alignment/Map) format, does
+ sorting, merging and indexing, and allows to retrieve reads in any regions
+ swiftly.
