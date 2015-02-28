@@ -1,2 +1,2 @@
 version=3
-http://sf.net/samtools/samtools-(.+)\.tar\.bz2
+https://github.com/samtools/samtools/releases/download/.+?/samtools-(.*)\.tar\.bz2

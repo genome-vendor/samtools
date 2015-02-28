@@ -1,2 +1,0 @@
-samtools1.0: new-package-should-close-itp-bug
-samtools1.0: manpage-has-errors-from-man *table wider than line width
