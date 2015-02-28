@@ -1,3 +1,9 @@
+samtools1.2 (1.2-1) lucid; urgency=low
+
+  * Release samtools version 1.2
+
+ -- Ian Ferguson <iferguso@genome.wustl.edu>  Fri, 27 Feb 2015 18:22:23 -0600
+
 samtools1.1 (1.1-1) lucid; urgency=low
 
   * Release samtools version 1.1

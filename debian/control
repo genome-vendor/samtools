@@ -1,4 +1,4 @@
-Source: samtools1.1
+Source: samtools1.2
 Section: science
 Priority: optional
 Maintainer: Genome Developers <genome-dev@genome.wustl.edu>
@@ -10,7 +10,7 @@ Homepage: http://www.htslib.org/
 Vcs-Git: git://github.com/samtools/samtools.git
 Vcs-Browser: https://github.com/samtools/samtools
 
-Package: samtools1.1
+Package: samtools1.2
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, ${python:Depends}, ${perl:Depends}
 Description: Utilities for the Sequence Alignment/Map (SAM) format
