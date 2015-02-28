@@ -9,12 +9,12 @@ process.
  1 files changed, 0 insertions(+), 12 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 43cefc3..afad9cb 100644
+index e368cee..21b8c6c 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -90,18 +90,6 @@ BGZIP  = $(HTSDIR)/bgzip
  
- PACKAGE_VERSION = 1.1
+ PACKAGE_VERSION = 1.2
  
 -# If building from a Git repository, replace $(PACKAGE_VERSION) with the Git
 -# description of the working tree: either a release tag with the same value
